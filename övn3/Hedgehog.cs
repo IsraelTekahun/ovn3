@@ -9,10 +9,9 @@ namespace övn3
     class Hedgehog : Animal
     {
         private int nrOfSpikes;
-
-        public override string DoSound()
+        public override void DoSound()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("ffff ffff"); ;
         }
     }
 }

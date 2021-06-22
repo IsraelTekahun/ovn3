@@ -8,5 +8,11 @@ namespace övn3
 {
     class Wolf : Animal
     {
+        private double wingSpan;
+        private int nrOfChildren;
+        public override void DoSound()
+        {
+            Console.WriteLine("grrrrr"); ;
+        }
     }
 }

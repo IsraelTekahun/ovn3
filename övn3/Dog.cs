@@ -8,5 +8,11 @@ namespace övn3
 {
     class Dog : Animal
     {
+        private double name;
+
+        public override void DoSound()
+        {
+            Console.WriteLine("woof woof"); ;
+        }
     }
 }

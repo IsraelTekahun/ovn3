@@ -27,6 +27,12 @@ namespace övn3
             this.weight = weight;
         }
 
-        public abstract string DoSound();
+        public virtual String Stats()
+        {
+            return $"Name {name} age {age} weight {weight}";
+        }
+
+        public abstract void DoSound();
     }
+
 }

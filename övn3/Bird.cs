@@ -10,9 +10,9 @@ namespace övn3
     {
         private double wingSpan;
 
-        public override string DoSound()
+        public override void DoSound()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("whistle"); ;
         }
     }
 }

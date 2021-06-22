@@ -8,5 +8,10 @@ namespace övn3
 {
     class Horse : Animal
     {
+        private double price;
+        public override void DoSound()
+        {
+            Console.WriteLine("mmmmmm mmmmmm"); ;
+        }
     }
 }

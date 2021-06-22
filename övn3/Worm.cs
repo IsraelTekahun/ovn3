@@ -10,10 +10,9 @@ namespace övn3
     {
         private bool isPoisonous;
 
-        //Overide egen implementation av Turn
-        public override string DoSound()
+        public override void DoSound()
         {
-            return "Vehicle turns";
+            Console.WriteLine("ssssss"); ;
         }
     }
 }
