@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace övn3
 {
-    class Swan : Bird
+    public interface IPerson
     {
-        private string country;
+        public void Talk();
     }
 }
