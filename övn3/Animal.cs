@@ -10,17 +10,17 @@ namespace övn3
     {
         String name;
         int age;
-        int weight;
+        double weight;
 
 
-        public Animal()
+        /*public Animal()
         {
             this.name = "";
             this.age = 0;
             this.weight = 0;
-        }
+        }*/
 
-        public Animal(string name, int age, int weight)
+        public Animal(string name, int age, double weight)
         {
             this.name = name;
             this.age = age;
@@ -29,7 +29,8 @@ namespace övn3
 
         public virtual String Stats()
         {
-            return $"Name: {name} age: {age} weight: {weight}";
+            //return $"Name: {name} age: {age} weight: {weight}kg";
+            return String.Format("{0,-10} | {1,-10} | {2,-8} | ", name, age, weight);
         }
 
         public abstract void DoSound();
@@ -39,13 +40,19 @@ namespace övn3
     {
         private int speed;
 
+        public Dog(string name, int age, double weight, int speed) : base(name, age, weight)
+        {
+            this.speed = speed;
+        }
+
         public override void DoSound()
         {
-            Console.WriteLine("Dog sound"); ;
+            Console.WriteLine("woof"); ;
         }
         public override String Stats()
         {
-            return $"{base.Stats()} speed: {speed}km/h";
+            String speedFormat = String.Format("{0,-22} ", "speed: " + speed + "km/h");
+            return $"{base.Stats()} {speedFormat}|";
         }
     }
 
@@ -53,13 +60,20 @@ namespace övn3
     class Hedgehog : Animal
     {
         private int nrOfSpikes;
+
+        public Hedgehog(string name, int age, double weight, int nrOfSpikes) : base(name, age, weight)
+        {
+            this.nrOfSpikes = nrOfSpikes;
+        }
+
         public override void DoSound()
         {
             Console.WriteLine("Hedgehog sound"); ;
         }
         public override String Stats()
-        {
-            return $"{base.Stats()} spikes count: {nrOfSpikes}";
+        {            
+            String spikesFormat = String.Format("{0,-22} ", "spikes count: " + nrOfSpikes);
+            return $"{base.Stats()} {spikesFormat}|";
         }
     }
     
@@ -67,36 +81,58 @@ namespace övn3
     class Horse : Animal
     {
         private double price;
+
+        public Horse(string name, int age, double weight, int price) : base(name, age, weight)
+        {
+            this.price = price;
+        }
         public override void DoSound()
         {
             Console.WriteLine("horse sound"); ;
         }
         public override String Stats()
         {
-            return $"{base.Stats()} price: {price}";
+            String priceFormat = String.Format("{0,-22} ", "price: " + price + "kr");
+            return $"{base.Stats()} {priceFormat}|";
         }
     }
 
     
     class Wolf : Animal
     {
-        private int nrOfChildren;
+        private String gender;
+        public Wolf(string name, int age, double weight, String gender) : base(name, age, weight)
+        {
+            this.gender = gender;
+        }
         public override void DoSound()
         {
             Console.WriteLine("wolf sound"); ;
         }
         public override String Stats()
         {
-            return $"{base.Stats()} children count: {nrOfChildren}";
+            String genderFormat = String.Format("{0,-22} ", "gender: " + gender);
+            return $"{base.Stats()} {genderFormat}|";
         }
 
     }
 
     class Wolfman : Wolf, IPerson
     {
+        private int nrOfChildren;
+        public Wolfman(string name, int age, double weight, int nrOfChildren, String gender) : base(name, age, weight, gender)
+        {
+            this.nrOfChildren = nrOfChildren;
+        }
         public void Talk()
         {
-            Console.WriteLine("wolfman sound");
+            Console.WriteLine("wolfman talking");
+        }
+
+        public override String Stats()
+        {
+            String childrenFormat = String.Format("{0,-22} ", "children count: " + nrOfChildren);
+            return $"{base.Stats()} {childrenFormat}|";
         }
     }
 
@@ -104,6 +140,10 @@ namespace övn3
     class Worm : Animal
     {
         private bool isPoisonous;
+        public Worm(string name, int age, double weight, bool isPoisonous) : base(name, age, weight)
+        {
+            this.isPoisonous = isPoisonous;
+        }
 
         public override void DoSound()
         {
@@ -118,13 +158,18 @@ namespace övn3
             else
                 poisonousStatus = "no";
 
-            return $"{base.Stats()} Posinious status: {poisonousStatus}";
+            String poisFormat = String.Format("{0,-22} ", "poisonous: " + poisonousStatus);
+            return $"{base.Stats()} {poisFormat}|";
         }
     }
 
     class Bird : Animal
     {
         private double wingSpan;
+        public Bird(string name, int age, double weight, int wingSpan) : base(name, age, weight)
+        {
+            this.wingSpan = wingSpan;
+        }
 
         public override void DoSound()
         {
@@ -132,13 +177,18 @@ namespace övn3
         }
         public override String Stats()
         {
-            return $"{base.Stats()} wingspan: {wingSpan}";
+            String wingSpanFormat = String.Format("{0,-22} ", "wingSpan: " + wingSpan + "m.");
+            return $"{base.Stats()} {wingSpanFormat}|";
         }
     }
 
     class Pelican : Bird
     {
-        private bool isPet;
+        private bool isRegistered;
+        public Pelican(string name, int age, double weight, bool isPet, int wingSpan) : base(name, age, weight, wingSpan)
+        {
+            this.isRegistered = isRegistered;
+        }
 
         public override void DoSound()
         {
@@ -147,20 +197,24 @@ namespace övn3
 
         public override String Stats()
         {
-            string petStatus;
+            string registrationStatus;
 
-            if (isPet)
-                petStatus = "yes";
+            if (isRegistered)
+                registrationStatus = "yes";
             else
-                petStatus = "no";
-
-            return $"{base.Stats()} wingspan: {petStatus}";
+                registrationStatus = "no";
+            String registerFormat = String.Format("{0,-22} ", "registered status: " + registrationStatus);
+            return $"{base.Stats()} {registerFormat}|";
         }
     }
 
     class Swan : Bird
     {
         private string homeCountry;
+        public Swan(string name, int age, double weight, string homeCountry, int wingSpan) : base(name, age, weight, wingSpan)
+        {
+            this.homeCountry = homeCountry;
+        }
         public override void DoSound()
         {
             Console.WriteLine("Swan sound"); ;
@@ -168,13 +222,18 @@ namespace övn3
 
         public override String Stats()
         {
-            return $"{base.Stats()} home country: {homeCountry}";
+            String countryFormat = String.Format("{0,-22} ", "home country: " + homeCountry);
+            return $"{base.Stats()} {countryFormat}|";
         }
     }
 
     class Flamingo : Bird
     {
         private String color;
+        public Flamingo(string name, int age, double weight, string color, int wingSpan) : base(name, age, weight, wingSpan)
+        {
+            this.color = color;
+        }
         public override void DoSound()
         {
             Console.WriteLine("Flamingo sound"); ;
@@ -182,7 +241,8 @@ namespace övn3
 
         public override String Stats()
         {
-            return $"{base.Stats()} color: {color}";
+            String colorFormat = String.Format("{0,-22} ", "color: " + color);
+            return $"{base.Stats()} {colorFormat}|";
         }
 
     }
