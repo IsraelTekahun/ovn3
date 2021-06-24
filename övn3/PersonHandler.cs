@@ -18,6 +18,23 @@ namespace övn3
         {
             return new Person(age, fname, lname, height, weight);
         }
+
+
+        /*4. Fortsätt skapa metoder i PersonHandler för att kunna hantera samtliga operationer som man kan vilja göra med en Person .*/
+        public bool isAdult(Person pers)
+        {
+            return pers.Age >= 18;
+        }
+
+        public bool isOverweight(Person pers)
+        {
+            return pers.Weight >= 300;
+        }
+
+        public bool isShort(Person pers)
+        {
+            return pers.Height < 1.6;
+        }
     }
 }
  

@@ -5,17 +5,20 @@ namespace övn3
 {
     class Program
     {
-        private static void encapsulation3_1()
+        private static void _3_1encapsulation()
         {
-            //Instansiera en person i program.cs 
-            Person person = new Person();
+            /*Instansiera en person i program.cs*/
+            
+            //Person person = new Person();
 
-            //kommer du direkt åt variablerna ?
+            /*kommer du direkt åt variablerna ?*/
+
             //person.fName
             //Nej, det gör jag inte för att dem är privata
 
-            //Se till att hantera undantagen i Program - klassen med en try-catch block.
-            try
+            /*Se till att hantera undantagen i Program - klassen med en try-catch block.*/
+            
+            /*try
             {
                 person.Age = 0;
             }
@@ -25,6 +28,7 @@ namespace övn3
                 Console.WriteLine(ex.Message);
             }
 
+            //anger tomt namn
             try
             {
                 person.FName = "";
@@ -34,22 +38,52 @@ namespace övn3
 
                 Console.WriteLine(ex.Message);
             }
+            
+            //anger långt namn
+            try
+            {
+                person.LName = "a very very very long name";
+            }
+            catch (Exception ex)
+            {
+
+                Console.WriteLine(ex.Message);
+            }*/
+
+
+            /*När denna klass är klar, kommentera bort er tidigare instans av Person från
+              Program.cs, och instansiera istället en PersonHandler . Skapa därigenom några
+              personer och testa era metoder. .*/
+            PersonHandler ph = new PersonHandler();
+            Person person2 = ph.CreatePerson(1, "Oliver", "Geroge", 1.65, 55);
+            Person person3 = ph.CreatePerson(55, "Axel", "Jakob", 1.96, 355);
+            Person person4 = ph.CreatePerson(10, "Ingrid", "Oskar", 1.7, 60);
+
+
+            ph.SetAge(person2, 13);
+            Console.WriteLine(person2.Age);
+            Console.WriteLine(ph.isAdult(person2));
+            Console.WriteLine(ph.isOverweight(person2));
+            Console.WriteLine(ph.isShort(person2));
+
+            Console.WriteLine(person3.Age);
+            Console.WriteLine(ph.isAdult(person3));
+            Console.WriteLine(ph.isOverweight(person3));
+            Console.WriteLine(ph.isShort(person3));
+
+            Console.WriteLine(person4.Age);
+            Console.WriteLine(ph.isAdult(person4));
+            Console.WriteLine(ph.isOverweight(person4));
+            Console.WriteLine(ph.isShort(person4));
 
         }
 
-
-        static void Main(string[] args)
+        private static void _3_3polymorfism()
         {
-            //PersonHandler ph = new PersonHandler();
-            //Console.WriteLine(ph.CreatePerson(11, "fdss", "fefefe", 12, 33));
-
-            
-
-            encapsulation3_1();
-
+            /*3. Skapa en lista Animals i program.cs som tar emot djur.*/
             List<Animal> animals = new List<Animal>();
 
-
+            /*4. Skapa några djur (av olika typ) i din lista.*/
             animals.Add(new Dog("Max", 13, 40, 50));
             animals.Add(new Hedgehog("Cooper", 3, 0.5, 50));
             animals.Add(new Horse("Daisy", 6, 200, 5000));
@@ -63,12 +97,17 @@ namespace övn3
             animals.Add(new Dog("Oliver", 4, 78, 77));
             animals.Add(new Flamingo("Winston", 1, 20, "red", 7));
 
-
-
+            /*Skriv ut vilka djur som finns i listan med hjälp av en foreach-loop*/
             foreach (var animal in animals)
             {
+                /*5. Skriv ut vilka djur som finns i listan med hjälp av en foreach-loop*/
                 Console.Write($"{animal.GetType().Name}: ");
+
+                /*6. Anropa även Animals Sound() metod i foreach-loopen.*/
                 animal.DoSound();
+
+                /*7. Gör en check i For-loopen ifall animal även är av typen Person, om den är det typ-casta till
+                     Person och anropa dess Talk() metod.*/
                 if (animal is IPerson wolfman)
                 {
                     wolfman.Talk();
@@ -82,11 +121,12 @@ namespace övn3
 
              9. F: Försök att lägga till en häst i listan av hundar.
                 dogs.Add(new Horse("Daisy", 6, 200, 5000));
-            
+
                 Varför fungerar inte det?
                 Det funkar inte för att jag försöker lägga in en häst i en lista som är avsedd för hundar. 
                 Listan accepterar enbart objekt av typen Dog
             */
+
 
             /*
             10. F: Vilken typ måste listan vara för att alla klasser skall kunna lagras tillsammans?
@@ -148,36 +188,38 @@ namespace övn3
                     Console.WriteLine(dog.getString());
                 }
             }
+        }
 
-            Console.WriteLine();
-            Console.WriteLine("7. I program.cs Main-metod: Skapa en lista med UserErrors och populera den medinstanser av NumericInputError och TextInputError.");
-            Console.WriteLine();
-
+        private static void _3_4polymorfism()
+        {
+            /*7. I program.cs Main-metod: Skapa en lista med UserErrors och populera den medinstanser av NumericInputError och TextInputError.");*/
+            
             List<UserError> userErrors = new List<UserError>
             {
                 new NumericInputError(), new TextInputError()
             };
 
-            
+
             Console.WriteLine();
             Console.WriteLine("8. Skriv ut samtliga UserErrors UEMessage() genom en foreach loop.");
             Console.WriteLine();
 
             foreach (var userError in userErrors)
-            {               
+            {
                 Console.WriteLine(userError.UEMessage());
             }
 
-            Console.WriteLine();
-            Console.WriteLine("9. Skapa nu tre egna klasser med tre egna definitioner på UEMessage()");
-            Console.WriteLine("10. Testa och se så det fungerar.");
-            Console.WriteLine();
+            
+            /*9. Skapa nu tre egna klasser med tre egna definitioner på UEMessage()*/
 
             List<UserError> userErrors2 = new List<UserError>
             {
                 new NoInput(), new EmptyFileds(), new UnsuccessfulInput()
             };
 
+            Console.WriteLine();
+            Console.WriteLine("10. Testa och se så det fungerar.");
+            Console.WriteLine();
             foreach (var userError in userErrors2)
             {
                 Console.WriteLine(userError.UEMessage());
@@ -186,11 +228,11 @@ namespace övn3
             /*
                 11. F: Varför är polymorfism viktigt att behärska?
 
-                Det hjälper oss att återanvända metoder som redan existerar i basklasser så vi undviker onödiga upprepningar            
+                Den hjälper oss att återanvända metoder som redan existerar i basklasser så vi undviker onödiga upprepningar            
                 
-                Det hjälper också oss med att sammla alla objekt som har gemensamma nämnare på ett stället för enklare hantering 
+                Det hjälper också oss med att samla alla objekt som har gemensamma nämnare på ett stället för enklare hantering 
                 
-                Genom att anända gränssnitt och abstrakta klasser kan vi se till att alla som ärver implementerar nädvändiga metoder vilket i sin tur 
+                Genom att använda gränssnitt och abstrakta klasser kan vi se till att alla som ärver implementerar nödvändiga metoder vilket i sin tur 
                 hälper oss att ha koll på vad andra klasser gör och det blir enklare att debuga 
 
 
@@ -200,8 +242,31 @@ namespace övn3
 
                 13. F: Vad är det för en skillnad på en Abstrakt klass och ett Interface?
 
-                En abstrakt klass kan innehålla variabler och definerade metoder medans ett interface kan bara innehålla metodsignaturer.  
+                En abstrakt klass kan innehålla variabler och definierade metoder medans ett interface kan bara innehålla metodsignaturer.  
              */
+        }
+
+        static void Main(string[] args)
+        {
+            _3_1encapsulation();
+
+
+            /*3.2) Arv*/
+            /* 13.F: Om vi under utvecklingen kommer fram till att samtliga fåglar behöver ett nytt attribut, i
+               vilken klass bör vi lägga det?
+
+               S: I Bird klassen
+
+               14.F: Om alla djur behöver det nya attributet, vart skulle man lägga det då?
+
+               S: I Animal klassen
+            */
+
+            /*3.3) Polymorfism*/
+
+            _3_3polymorfism();
+            _3_4polymorfism();
+
 
         }
 
