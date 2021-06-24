@@ -1,19 +1,31 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace övn3
 {
     class Worm : Animal
     {
         private bool isPoisonous;
-
-        //Overide egen implementation av Turn
-        public override string DoSound()
+        public Worm(string name, int age, double weight, bool isPoisonous) : base(name, age, weight)
         {
-            return "Vehicle turns";
+            this.isPoisonous = isPoisonous;
+        }
+
+        public override void DoSound()
+        {
+            Console.WriteLine("worm sound");
+        }
+        public override String Stats()
+        {
+            string poisonousStatus;
+
+            if (isPoisonous)
+                poisonousStatus = "yes";
+            else
+                poisonousStatus = "no";
+
+            String poisFormat = String.Format("{0,-22} ", "poisonous: " + poisonousStatus);
+            return $"{base.Stats()} {poisFormat}|";
         }
     }
+
 }

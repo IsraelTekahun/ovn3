@@ -14,6 +14,10 @@ namespace övn3
         private double height;
         private double weight;
 
+        public Person()
+        {
+        }
+
         public Person(int age, string fname, string lname, double height, double weight)
         {
             this.age = age;
@@ -35,7 +39,7 @@ namespace övn3
                 if(value > 0)
                     age = value;
                 else
-                    throw new ArgumentException("0 or less is given as age");
+                    throw new ArgumentException("0 or less is given as age, this fired an error!");
             }
         }
 
@@ -49,10 +53,10 @@ namespace övn3
 
             set
             {
-                if (value.Length >= 2 || value.Length <= 10)
+                if (value.Length >= 2 && value.Length <= 10)
                     fName = value;
                 else
-                    throw new ArgumentException("wrong first name length given");
+                    throw new ArgumentException("wrong first name length given, this fired an error!");
             }
         }
 
@@ -65,13 +69,46 @@ namespace övn3
 
             set
             {
-                if (value.Length >= 3 || value.Length <= 15)
+                if (value.Length >= 3 && value.Length <= 15)
                     lName = value;
                 else
-                    throw new ArgumentException("wrong last name length given");
+                    throw new ArgumentException("wrong last name length given, this fired an error!");
             }
         }
 
+
+        public double Weight
+        {
+            get
+            {
+                return weight;
+            }
+
+            set
+            {
+                if (value >= 1 && value <= 500)
+                    weight = value;
+                else
+                    throw new ArgumentException("unreasonable human weight is given, this fired an error!");
+            }
+        }
+
+
+        public double Height
+        {
+            get
+            {
+                return height;
+            }
+
+            set
+            {
+                if (value >= 0.2 && value <= 4)
+                    weight = value;
+                else
+                    throw new ArgumentException("unreasonable human height is given, this fired an error!");
+            }
+        }
 
         public override string ToString()
         {

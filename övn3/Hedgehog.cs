@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace övn3
 {
@@ -10,9 +6,20 @@ namespace övn3
     {
         private int nrOfSpikes;
 
-        public override string DoSound()
+        public Hedgehog(string name, int age, double weight, int nrOfSpikes) : base(name, age, weight)
         {
-            throw new NotImplementedException();
+            this.nrOfSpikes = nrOfSpikes;
+        }
+
+        public override void DoSound()
+        {
+            Console.WriteLine("Hedgehog sound"); ;
+        }
+        public override String Stats()
+        {            
+            String spikesFormat = String.Format("{0,-22} ", "spikes count: " + nrOfSpikes);
+            return $"{base.Stats()} {spikesFormat}|";
         }
     }
+
 }

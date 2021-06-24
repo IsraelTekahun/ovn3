@@ -1,18 +1,24 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace övn3
 {
     class Bird : Animal
     {
         private double wingSpan;
-
-        public override string DoSound()
+        public Bird(string name, int age, double weight, int wingSpan) : base(name, age, weight)
         {
-            throw new NotImplementedException();
+            this.wingSpan = wingSpan;
+        }
+
+        public override void DoSound()
+        {
+            Console.WriteLine("Bird sound"); ;
+        }
+        public override String Stats()
+        {
+            String wingSpanFormat = String.Format("{0,-22} ", "wingSpan: " + wingSpan + "m.");
+            return $"{base.Stats()} {wingSpanFormat}|";
         }
     }
+
 }

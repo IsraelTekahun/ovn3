@@ -10,23 +10,31 @@ namespace övn3
     {
         String name;
         int age;
-        int weight;
+        double weight;
 
 
-        public Animal()
-        {
-            this.name = "";
-            this.age = 0;
-            this.weight = 0;
-        }
-
-        public Animal(string name, int age, int weight)
+        public Animal(string name, int age, double weight)
         {
             this.name = name;
             this.age = age;
             this.weight = weight;
         }
 
-        public abstract string DoSound();
+
+        public String Name
+        {
+            get
+            {
+                return name;
+            }
+        }
+
+        public virtual String Stats()
+        {
+            return String.Format("{0,-10} | {1,-10} | {2,-8} | ", name, age, weight);
+        }
+
+        public abstract void DoSound();
     }
+
 }
