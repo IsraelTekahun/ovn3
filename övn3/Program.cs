@@ -5,11 +5,47 @@ namespace övn3
 {
     class Program
     {
+        private static void encapsulation3_1()
+        {
+            //Instansiera en person i program.cs 
+            Person person = new Person();
+
+            //kommer du direkt åt variablerna ?
+            //person.fName
+            //Nej, det gör jag inte för att dem är privata
+
+            //Se till att hantera undantagen i Program - klassen med en try-catch block.
+            try
+            {
+                person.Age = 0;
+            }
+            catch (Exception ex)
+            {
+
+                Console.WriteLine(ex.Message);
+            }
+
+            try
+            {
+                person.FName = "";
+            }
+            catch (Exception ex)
+            {
+
+                Console.WriteLine(ex.Message);
+            }
+
+        }
+
+
         static void Main(string[] args)
         {
             //PersonHandler ph = new PersonHandler();
             //Console.WriteLine(ph.CreatePerson(11, "fdss", "fefefe", 12, 33));
 
+            
+
+            encapsulation3_1();
 
             List<Animal> animals = new List<Animal>();
 
@@ -147,6 +183,27 @@ namespace övn3
                 Console.WriteLine(userError.UEMessage());
             }
 
+            /*
+                11. F: Varför är polymorfism viktigt att behärska?
+
+                Det hjälper oss att återanvända metoder som redan existerar i basklasser så vi undviker onödiga upprepningar            
+                
+                Det hjälper också oss med att sammla alla objekt som har gemensamma nämnare på ett stället för enklare hantering 
+                
+                Genom att anända gränssnitt och abstrakta klasser kan vi se till att alla som ärver implementerar nädvändiga metoder vilket i sin tur 
+                hälper oss att ha koll på vad andra klasser gör och det blir enklare att debuga 
+
+
+                12. F: Hur kan polymorfism förändra och förbättra kod via en bra struktur?
+                
+                Den skapar en logisk struktur i en implementation så det går att modulera verkligheten. 
+
+                13. F: Vad är det för en skillnad på en Abstrakt klass och ett Interface?
+
+                En abstrakt klass kan innehålla variabler och definerade metoder medans ett interface kan bara innehålla metodsignaturer.  
+             */
+
         }
+
     }
 }
