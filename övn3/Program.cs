@@ -60,21 +60,28 @@ namespace övn3
             Person person4 = ph.CreatePerson(10, "Ingrid", "Oskar", 1.7, 60);
 
 
+            Console.WriteLine(person2.FName);
             ph.SetAge(person2, 13);
             Console.WriteLine(person2.Age);
             Console.WriteLine(ph.isAdult(person2));
             Console.WriteLine(ph.isOverweight(person2));
             Console.WriteLine(ph.isShort(person2));
+            Console.WriteLine("----------");
 
+            Console.WriteLine(person3.FName);
             Console.WriteLine(person3.Age);
             Console.WriteLine(ph.isAdult(person3));
             Console.WriteLine(ph.isOverweight(person3));
             Console.WriteLine(ph.isShort(person3));
+            Console.WriteLine("----------");
 
+            Console.WriteLine(person4.FName);
             Console.WriteLine(person4.Age);
             Console.WriteLine(ph.isAdult(person4));
             Console.WriteLine(ph.isOverweight(person4));
             Console.WriteLine(ph.isShort(person4));
+            Console.WriteLine("----------");
+            Console.WriteLine();
 
         }
 
