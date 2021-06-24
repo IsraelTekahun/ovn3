@@ -54,6 +54,10 @@ namespace övn3
             String speedFormat = String.Format("{0,-22} ", "speed: " + speed + "km/h");
             return $"{base.Stats()} {speedFormat}|";
         }
+        public String getString()
+        {
+            return "string from dog class";
+        }
     }
 
 
@@ -185,7 +189,7 @@ namespace övn3
     class Pelican : Bird
     {
         private bool isRegistered;
-        public Pelican(string name, int age, double weight, bool isPet, int wingSpan) : base(name, age, weight, wingSpan)
+        public Pelican(string name, int age, double weight, bool isRegistered, int wingSpan) : base(name, age, weight, wingSpan)
         {
             this.isRegistered = isRegistered;
         }
@@ -243,6 +247,58 @@ namespace övn3
         {
             String colorFormat = String.Format("{0,-22} ", "color: " + color);
             return $"{base.Stats()} {colorFormat}|";
+        }
+
+    }
+
+
+
+    abstract class UserError
+    {
+
+        public abstract string UEMessage();
+
+    }
+    class NumericInputError : UserError
+    {
+
+        public override string UEMessage()
+        {
+            return "You tried to use a numeric input in a text only field. This fired an error!";
+        }
+
+    }
+    class TextInputError : UserError
+    {
+        public override string UEMessage()
+        {
+            return "You tried to use a text input in a numericonly field. This fired an error!";
+        }
+
+    }
+    class NoInput : UserError
+    {
+        public override string UEMessage()
+        {
+            return "No input given. This fired an error!";
+        }
+
+    }
+    class EmptyFileds : UserError
+    {
+
+        public override string UEMessage()
+        {
+            return "Not all fields are filled. This fired an error!";
+        }
+
+    }
+    class UnsuccessfulInput : UserError
+    {
+        
+        public override string UEMessage()
+        {
+            return "The input was unsuccessful. This fired an error!";
         }
 
     }
