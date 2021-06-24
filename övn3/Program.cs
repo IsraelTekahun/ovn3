@@ -98,7 +98,6 @@ namespace övn3
             animals.Add(new Worm("Lily", 11, 1, true));
             animals.Add(new Dog("Zoey", 7, 64, 20));
             animals.Add(new Wolfman("Roxy", 7, 28, 4, "female"));
-            //animals.Add(new Bird("Rocky", 22, 35, 4));
             animals.Add(new Pelican("Milo", 12, 68, false, 5));
             animals.Add(new Swan("Ellie", 3, 34, "Germany", 2));
             animals.Add(new Dog("Oliver", 4, 78, 77));
@@ -237,7 +236,7 @@ namespace övn3
 
                 Den hjälper oss att återanvända metoder som redan existerar i basklasser så vi undviker onödiga upprepningar            
                 
-                Det hjälper också oss med att samla alla objekt som har gemensamma nämnare på ett stället för enklare hantering 
+                Den hjälper också oss med att samla alla objekt som har gemensamma nämnare på ett stället för enklare hantering 
                 
                 Genom att använda gränssnitt och abstrakta klasser kan vi se till att alla som ärver implementerar nödvändiga metoder vilket i sin tur 
                 hälper oss att ha koll på vad andra klasser gör och det blir enklare att debuga 
